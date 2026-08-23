@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Ubicacion: app/src/main/res/xml/network_security_config.xml
+
+  Android bloquea HTTP sin cifrar desde API 28.
+  El ESP32 no hace HTTPS, asi que hay que permitir texto plano
+  SOLO hacia la red local. Nunca uses
+  android:usesCleartextTraffic="true" a secas: eso abre la app
+  a todo internet y es mala practica de seguridad.
+
+  Este archivo es un buen punto para la sustentacion: demuestra
+  que entiendes por que Android bloquea HTTP y como se abre la
+  excepcion minima necesaria.
+-->
+<network-security-config>
+
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- Rango tipico de router domestico -->
+        <domain includeSubdomains="false">192.168.1.200</domain>
+
+        <!-- Otras subredes comunes, por si cambias de red -->
+        <domain includeSubdomains="false">192.168.0.200</domain>
+        <domain includeSubdomains="false">192.168.43.50</domain>
+        <domain includeSubdomains="false">192.168.137.50</domain>
+
+        <!-- Emulador de Android apuntando al PC anfitrion -->
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+
+</network-security-config>

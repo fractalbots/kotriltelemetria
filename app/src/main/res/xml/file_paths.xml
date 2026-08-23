@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Ubicacion: app/src/main/res/xml/file_paths.xml
+
+  Le dice al FileProvider que carpetas puede compartir.
+  Si esta ruta no coincide EXACTAMENTE con donde creas el
+  archivo de la foto, la app revienta en tiempo de ejecucion
+  con IllegalArgumentException y el mensaje no ayuda nada.
+
+  Nosotros guardaremos las fotos en:
+      context.filesDir/fotos/
+  que corresponde a <files-path path="fotos/" />
+-->
+<paths>
+    <files-path
+        name="fotos_ensayos"
+        path="fotos/" />
+
+    <cache-path
+        name="cache_temporal"
+        path="." />
+</paths>
